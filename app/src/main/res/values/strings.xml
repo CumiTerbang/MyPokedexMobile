@@ -5,4 +5,5 @@
     <string name="title_info_menu">Info</string>
     <string name="my_pokemon_no_data">you don\'t have any pokemon in your collection</string>
     <string name="go_catch_em_all">go catch \'em all</string>
+    <string name="search_pokemon">Search pokemon...</string>
 </resources>

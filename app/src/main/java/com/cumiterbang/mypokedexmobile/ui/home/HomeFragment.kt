@@ -30,16 +30,15 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHomeMenu
-        val buttonCatch: Button = binding.goCatch
         homeViewModel.myPokemon.observe(viewLifecycleOwner) {
             if(it.isEmpty()){
-                textView.visibility = View.VISIBLE
-                buttonCatch.visibility = View.VISIBLE
-                textView.text = resources.getString(R.string.my_pokemon_no_data)
+                binding.textHomeMenu.visibility = View.VISIBLE
+                binding.goCatch.visibility = View.VISIBLE
+
+                binding.textHomeMenu.text = resources.getString(R.string.my_pokemon_no_data)
             }else{
-                textView.visibility = View.GONE
-                buttonCatch.visibility = View.GONE
+                binding.textHomeMenu.visibility = View.GONE
+                binding.goCatch.visibility = View.GONE
             }
         }
         return root

@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_catch"
-        android:name="com.cumiterbang.mypokedexmobile.ui.catch.CatchFragment"
+        android:name="com.cumiterbang.mypokedexmobile.ui.catch_new.CatchFragment"
         android:label="@string/title_catch_menu"
         tools:layout="@layout/fragment_catch"
         />
