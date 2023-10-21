@@ -12,15 +12,15 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.cumiterbang.mypokedexmobile.ui.dashboard.DashboardFragment"
+        android:id="@+id/navigation_catch"
+        android:name="com.cumiterbang.mypokedexmobile.ui.catch.CatchFragment"
         android:label="@string/title_catch_menu"
         tools:layout="@layout/fragment_catch"
         />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.cumiterbang.mypokedexmobile.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_info"
+        android:name="com.cumiterbang.mypokedexmobile.ui.info.InfoFragment"
         android:label="@string/title_info_menu"
         tools:layout="@layout/fragment_info" />
 </navigation>

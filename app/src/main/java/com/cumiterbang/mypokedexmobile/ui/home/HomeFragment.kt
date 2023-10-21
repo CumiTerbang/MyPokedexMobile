@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.cumiterbang.mypokedexmobile.R
 import com.cumiterbang.mypokedexmobile.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -29,8 +31,16 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textHomeMenu
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        val buttonCatch: Button = binding.goCatch
+        homeViewModel.myPokemon.observe(viewLifecycleOwner) {
+            if(it.isEmpty()){
+                textView.visibility = View.VISIBLE
+                buttonCatch.visibility = View.VISIBLE
+                textView.text = resources.getString(R.string.my_pokemon_no_data)
+            }else{
+                textView.visibility = View.GONE
+                buttonCatch.visibility = View.GONE
+            }
         }
         return root
     }

@@ -3,4 +3,6 @@
     <string name="title_home_menu">Home</string>
     <string name="title_catch_menu">Catch</string>
     <string name="title_info_menu">Info</string>
+    <string name="my_pokemon_no_data">you don\'t have any pokemon in your collection</string>
+    <string name="go_catch_em_all">go catch \'em all</string>
 </resources>

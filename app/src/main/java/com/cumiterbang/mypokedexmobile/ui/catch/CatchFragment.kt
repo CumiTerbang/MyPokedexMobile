@@ -1,4 +1,4 @@
-package com.cumiterbang.mypokedexmobile.ui.dashboard
+package com.cumiterbang.mypokedexmobile.ui.catch
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.cumiterbang.mypokedexmobile.databinding.FragmentCatchBinding
 
-class DashboardFragment : Fragment() {
+class CatchFragment : Fragment() {
 
     private var _binding: FragmentCatchBinding? = null
 
@@ -23,7 +23,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(CatchViewModel::class.java)
 
         _binding = FragmentCatchBinding.inflate(inflater, container, false)
         val root: View = binding.root
