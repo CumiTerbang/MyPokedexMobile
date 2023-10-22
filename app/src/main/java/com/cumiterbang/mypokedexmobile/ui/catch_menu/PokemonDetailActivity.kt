@@ -61,7 +61,7 @@ class PokemonDetailActivity : AppCompatActivity() {
         val imagePath = ApiUrls.getImagePath(ApiUrls.getPokemonIdFromUrl(pokemonItemModel.url))
         Glide.with(this@PokemonDetailActivity).load(imagePath)
             .placeholder(CustomShimmerPlaceholder().getPlaceholder())
-            .centerInside()
+            .fitCenter()
             .into(imageViewPokemon)
 
         val spritePath = ApiUrls.getSpritePath(ApiUrls.getPokemonIdFromUrl(pokemonItemModel.url))
