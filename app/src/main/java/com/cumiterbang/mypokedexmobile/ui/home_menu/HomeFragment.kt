@@ -118,11 +118,13 @@ class HomeFragment : Fragment() {
                 Resource.Status.SUCCESS -> {
                     val myPokemonCollection = it.data ?: emptyList()
                     if (myPokemonCollection.isEmpty()) {
+                        listViewMyPokemonCollection.visibility = View.GONE
                         textHomeMenu.visibility = View.VISIBLE
                         buttonGoCatch.visibility = View.VISIBLE
 
                         textHomeMenu.text = resources.getString(R.string.my_pokemon_no_data)
                     } else {
+                        listViewMyPokemonCollection.visibility = View.VISIBLE
                         myCollection.clear()
                         myCollection = ArrayList()
 
