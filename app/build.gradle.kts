@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.cumiterbang.mypokedexmobile"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.cumiterbang.mypokedexmobile"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -103,7 +103,8 @@ dependencies {
     implementation("androidx.core:core-splashscreen:$splashscreenVersion")
 
     //Room
-    val roomVersion = "2.4.1"
+    val roomVersion = "2.6.0"
     implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
 }

@@ -15,7 +15,7 @@ class CatchViewModel @Inject constructor(private val dataRepo: DataRepo): ViewMo
 
     private val _offset = MutableLiveData<Int>()
     private val _getPokemons = _offset.switchMap {offset->
-        dataRepo.getPokeomns(offset)
+        dataRepo.getPokemons(offset)
     }
     val getPokemons: LiveData<Resource<PokemonResultsModel>> = _getPokemons
 

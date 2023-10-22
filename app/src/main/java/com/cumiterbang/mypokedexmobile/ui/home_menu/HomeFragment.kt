@@ -7,11 +7,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.cumiterbang.mypokedexmobile.R
+import com.cumiterbang.mypokedexmobile.data.helper.Resource
+import com.cumiterbang.mypokedexmobile.data.local.MyPokemonDatabase
 import com.cumiterbang.mypokedexmobile.databinding.FragmentHomeBinding
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -39,23 +43,39 @@ class HomeFragment : Fragment() {
         observeMyPokemonCollection()
     }
 
-    private fun setPage()= with(binding){
+    private fun setPage() = with(binding) {
         buttonGoCatch.setOnClickListener {
             viewModel.setGoCactchPokemon(true)
         }
     }
 
-    private fun observeMyPokemonCollection()=with(binding){
-        viewModel.myPokemon.observe(viewLifecycleOwner) {
-            if(it.isEmpty()){
-                textHomeMenu.visibility = View.VISIBLE
-                buttonGoCatch.visibility = View.VISIBLE
+    private fun observeMyPokemonCollection() = with(binding) {
+        viewModel.myPokemonCollection.observe(viewLifecycleOwner) {
+            when (it.status) {
+                Resource.Status.LOADING -> {
+                    progressBar.visibility = View.VISIBLE
+                }
 
-                textHomeMenu.text = resources.getString(R.string.my_pokemon_no_data)
-            }else{
-                textHomeMenu.visibility = View.GONE
-                buttonGoCatch.visibility = View.GONE
+                Resource.Status.SUCCESS -> {
+                    val myPokemonCollection = it.data ?: emptyList()
+                    if (myPokemonCollection.isEmpty()) {
+                        textHomeMenu.visibility = View.VISIBLE
+                        buttonGoCatch.visibility = View.VISIBLE
+
+                        textHomeMenu.text = resources.getString(R.string.my_pokemon_no_data)
+                    } else {
+                        textHomeMenu.visibility = View.GONE
+                        buttonGoCatch.visibility = View.GONE
+                    }
+
+                    progressBar.visibility = View.GONE
+                }
+
+                Resource.Status.ERROR -> {
+                    progressBar.visibility = View.GONE
+                }
             }
+
         }
 
     }
