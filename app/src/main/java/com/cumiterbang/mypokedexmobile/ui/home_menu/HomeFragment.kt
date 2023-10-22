@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -79,6 +80,26 @@ class HomeFragment : Fragment() {
             val intent = Intent(activity, PokemonDetailActivity::class.java)
             intent.putExtra("pokemonItemModel", Gson().toJson(pokemonItem))
             startActivity(intent)
+        }
+
+        pokemonsAdapter.onLongItemClick = {
+            val builder = AlertDialog.Builder(binding.root.context)
+            builder.setTitle("Releasing your pokemon")
+            builder.setMessage("Do you want to release ${it.nameByCatch.uppercase()}?")
+            builder.setPositiveButton(R.string.yes) { dialog, which ->
+                val snackbar = Snackbar.make(
+                    binding.root, "${it.nameByCatch.uppercase()} had been released",
+                    Snackbar.LENGTH_LONG
+                ).setAction("Action", null)
+                snackbar.show()
+
+                viewModel.deleteSelectedPokemon(it)
+            }
+            builder.setNegativeButton(R.string.no) { dialog, which ->
+
+            }
+            builder.show()
+
         }
 
         with(binding.listViewMyPokemonCollection) {

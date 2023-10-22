@@ -22,6 +22,7 @@ class MyPokemonListAdapter (
         }
 
     var onItemClick: ((MyPokemonEntity) -> Unit)? = null
+    var onLongItemClick: ((MyPokemonEntity) -> Unit)? = null
 
     inner class GalleryViewHolder(val binding: MyPokemonCollectionItemBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -51,6 +52,11 @@ class MyPokemonListAdapter (
 
                 itemView.setOnClickListener {
                     onItemClick?.invoke(this)
+                }
+
+                itemView.setOnLongClickListener {
+                    onLongItemClick?.invoke(this)
+                    true
                 }
 
             }

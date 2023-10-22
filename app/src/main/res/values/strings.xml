@@ -8,4 +8,6 @@
     <string name="search_pokemon">Search pokemon...</string>
     <string name="catch_now">Catch Now</string>
     <string name="my_pokemon_collection">My Pokemon Collection</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
 </resources>
