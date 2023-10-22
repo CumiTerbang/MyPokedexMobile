@@ -57,7 +57,7 @@ class CatchFragment : Fragment() {
 
         pokemonsAdapter = PokemonsGridAdapter(binding.root.context)
         pokemonsAdapter.onItemClick = {
-            val intent = Intent(activity, PokemonDetailPage::class.java)
+            val intent = Intent(activity, PokemonDetailActivity::class.java)
             intent.putExtra("pokemonItemModel", Gson().toJson(it))
             startActivity(intent)
         }

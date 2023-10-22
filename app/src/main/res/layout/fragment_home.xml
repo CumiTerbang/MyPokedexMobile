@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.home_menu.HomeFragment">
 
+    <TextView
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:padding="16dp"
+        android:id="@+id/topTitle"
+        android:text="@string/my_pokemon_collection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,7 +27,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topTitle">
 
         <TextView
             android:id="@+id/text_home_menu"
@@ -48,6 +61,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/topTitle" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listViewMyPokemonCollection"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topTitle" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

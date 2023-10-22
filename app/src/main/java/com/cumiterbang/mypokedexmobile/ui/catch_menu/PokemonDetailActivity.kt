@@ -1,8 +1,7 @@
 package com.cumiterbang.mypokedexmobile.ui.catch_menu
 
-import android.app.Activity
 import android.os.Bundle
-import android.view.View.OnClickListener
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.cumiterbang.mypokedexmobile.data.helper.ApiUrls
@@ -11,12 +10,17 @@ import com.cumiterbang.mypokedexmobile.databinding.ActivityPokemonDetailPageBind
 import com.cumiterbang.mypokedexmobile.utils.CustomShimmerPlaceholder
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
 
-class PokemonDetailPage: AppCompatActivity() {
+@AndroidEntryPoint
+class PokemonDetailActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityPokemonDetailPageBinding
     private lateinit var pokemonItemModel: PokemonListItemModel
+
+    private val viewModel:PokemonDetailViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,13 +48,13 @@ class PokemonDetailPage: AppCompatActivity() {
         textViewPokemonName.text = pokemonItemModel.name
 
         val imagePath = ApiUrls.getImagePath(ApiUrls.getPokemonIdFromUrl(pokemonItemModel.url))
-        Glide.with(this@PokemonDetailPage).load(imagePath)
+        Glide.with(this@PokemonDetailActivity).load(imagePath)
             .placeholder(CustomShimmerPlaceholder().getPlaceholder())
             .centerInside()
             .into(imageViewPokemon)
 
         val spritePath = ApiUrls.getSpritePath(ApiUrls.getPokemonIdFromUrl(pokemonItemModel.url))
-        Glide.with(this@PokemonDetailPage).load(spritePath)
+        Glide.with(this@PokemonDetailActivity).load(spritePath)
             .placeholder(CustomShimmerPlaceholder().getPlaceholder())
             .centerCrop()
             .into(imageViewSprite)
@@ -66,6 +70,9 @@ class PokemonDetailPage: AppCompatActivity() {
                     Snackbar.LENGTH_LONG
                 ).setAction("Action", null)
                 snackbar.show()
+
+                viewModel.catchSuccess(pokemonItemModel)
+
             }else{
                 val snackbar = Snackbar.make(
                     binding.root, "Catching pokemon failed",
