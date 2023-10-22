@@ -7,6 +7,7 @@ import com.cumiterbang.mypokedexmobile.data.entity.MyPokemonEntity
 import com.cumiterbang.mypokedexmobile.data.helper.Resource
 import com.cumiterbang.mypokedexmobile.data.local.MyPokemonDAO
 import com.cumiterbang.mypokedexmobile.data.model.PokemonResultsModel
+import com.cumiterbang.mypokedexmobile.data.model.pokemon_detail.PokemonDetailModel
 import com.cumiterbang.mypokedexmobile.data.remote.RemoteDataSource
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Inject
@@ -21,7 +22,6 @@ constructor(
     fun getPokemons(offset: Int) = performGetPokemonsOperation(
         networkCall = { remoteDataSource.getPokemons(offset) }
     )
-
     private fun <A> performGetPokemonsOperation(
         networkCall: suspend () -> Resource<A>
     ): LiveData<Resource<PokemonResultsModel>> =
@@ -38,10 +38,28 @@ constructor(
             }
         }
 
+    fun getPokemonDetail(name: String) = performGetPokemonDetailOperation(
+        networkCall = { remoteDataSource.getPokemonDetail(name) }
+    )
+    private fun <A> performGetPokemonDetailOperation(
+        networkCall: suspend () -> Resource<A>
+    ): LiveData<Resource<PokemonDetailModel>> =
+        liveData(Dispatchers.IO) {
+            emit(Resource.loading())
+
+            val responseStatus = networkCall.invoke()
+            if (responseStatus.status == Resource.Status.SUCCESS) {
+                val result = responseStatus.data!! as PokemonDetailModel
+                emit(Resource.success(result))
+
+            } else if (responseStatus.status == Resource.Status.ERROR) {
+                emit(Resource.error(responseStatus.message!!))
+            }
+        }
+
     fun getMyPokemonCollection() = performGetMyPokemonCollectionOperation(
         databaseQuery = { localDataSource.getMyPokemonCollection() }
     )
-
     private fun <T> performGetMyPokemonCollectionOperation(
         databaseQuery: () -> LiveData<T>
     ): LiveData<Resource<List<MyPokemonEntity>>> =

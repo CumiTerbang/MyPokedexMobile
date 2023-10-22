@@ -6,23 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.catch_menu.CatchFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchViewPokemon"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="12dp"
-        android:focusable="false"
-        app:closeIcon="@android:drawable/ic_menu_close_clear_cancel"
-        app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:queryHint="@string/search_pokemon"
-        app:searchHintIcon="@null"
-        app:searchIcon="@android:drawable/ic_menu_search" />
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/gridViewPokemons"
         android:layout_width="0dp"
@@ -34,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewPokemon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -47,5 +30,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchViewPokemon" />
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

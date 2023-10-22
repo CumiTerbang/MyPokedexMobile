@@ -28,9 +28,7 @@ class InfoFragment : Fragment() {
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textInfoMenu
         notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
         }
         return root
     }

@@ -7,6 +7,6 @@ class RemoteDataSource @Inject constructor(
 ) : BaseDataSource() {
 
     suspend fun getPokemons(offset: Int) = getResult { apiServices.getPokemons(offset) }
-    suspend fun getPokemonDetail(id: Int) = getResult { apiServices.getPokemonDetail(id) }
+    suspend fun getPokemonDetail(name: String) = getResult { apiServices.getPokemonDetail(name) }
 
 }
