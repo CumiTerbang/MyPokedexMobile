@@ -6,6 +6,9 @@ an android app demo to view pokemon info using API from  [Poke API](https://poke
 
 this is my approach for Phincon's Technical Test Challange by making an android application based on the requirement as the solution
 
+Click [here](https://drive.google.com/file/d/1MfECZO5NfzmnZPv6UGuoCVTaDDATfTip/view?usp=share_link) to download the app
+
+
 ## Features
 1. Scrolling through all available pokemon in Catch menu
 2. See pokemon detail info
