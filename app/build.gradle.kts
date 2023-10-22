@@ -52,7 +52,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     //Bottom Navigation
-    implementation ("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
     implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
 
@@ -92,13 +92,18 @@ dependencies {
 
     //Timber
     val timberVersion = "4.7.1"
-    implementation ("com.jakewharton.timber:timber:$timberVersion")
+    implementation("com.jakewharton.timber:timber:$timberVersion")
 
     //Shimmering
-    val shimmeringVersion ="0.5.0"
+    val shimmeringVersion = "0.5.0"
     implementation("com.facebook.shimmer:shimmer:$shimmeringVersion")
 
     //Splashscreen
     val splashscreenVersion = "1.0.1"
     implementation("androidx.core:core-splashscreen:$splashscreenVersion")
+
+    //Room
+    val roomVersion = "2.4.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
 }

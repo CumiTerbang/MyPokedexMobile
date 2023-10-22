@@ -7,20 +7,20 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.cumiterbang.mypokedexmobile.ui.home.HomeFragment"
+        android:name="com.cumiterbang.mypokedexmobile.ui.home_menu.HomeFragment"
         android:label="@string/title_home_menu"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_catch"
-        android:name="com.cumiterbang.mypokedexmobile.ui.catch_new.CatchFragment"
+        android:name="com.cumiterbang.mypokedexmobile.ui.catch_menu.CatchFragment"
         android:label="@string/title_catch_menu"
         tools:layout="@layout/fragment_catch"
         />
 
     <fragment
         android:id="@+id/navigation_info"
-        android:name="com.cumiterbang.mypokedexmobile.ui.info.InfoFragment"
+        android:name="com.cumiterbang.mypokedexmobile.ui.info_menu.InfoFragment"
         android:label="@string/title_info_menu"
         tools:layout="@layout/fragment_info" />
 </navigation>

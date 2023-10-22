@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_red"
-    tools:context=".ui.info.InfoFragment">
+    android:background="@color/grey"
+    tools:context=".ui.info_menu.InfoFragment">
 
     <TextView
         android:id="@+id/text_info_menu"

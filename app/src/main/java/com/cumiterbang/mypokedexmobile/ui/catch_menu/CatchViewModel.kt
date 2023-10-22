@@ -1,4 +1,4 @@
-package com.cumiterbang.mypokedexmobile.ui.catch_new
+package com.cumiterbang.mypokedexmobile.ui.catch_menu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

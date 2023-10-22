@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment">
+    tools:context=".ui.home_menu.HomeFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/go_catch"
+            android:id="@+id/buttonGoCatch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/go_catch_em_all" />

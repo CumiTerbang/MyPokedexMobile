@@ -1,4 +1,4 @@
-package com.cumiterbang.mypokedexmobile.ui.info
+package com.cumiterbang.mypokedexmobile.ui.info_menu
 
 import android.os.Bundle
 import android.view.LayoutInflater

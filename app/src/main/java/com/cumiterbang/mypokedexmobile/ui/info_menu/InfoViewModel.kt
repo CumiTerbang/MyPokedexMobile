@@ -1,4 +1,4 @@
-package com.cumiterbang.mypokedexmobile.ui.info
+package com.cumiterbang.mypokedexmobile.ui.info_menu
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -1,24 +1,23 @@
-package com.cumiterbang.mypokedexmobile.ui.catch_new
+package com.cumiterbang.mypokedexmobile.ui.catch_menu
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cumiterbang.mypokedexmobile.data.helper.ApiUrls
 import com.cumiterbang.mypokedexmobile.data.helper.Resource
 import com.cumiterbang.mypokedexmobile.data.model.PokemonListItemModel
-import com.cumiterbang.mypokedexmobile.data.model.PokemonResultsModel
 import com.cumiterbang.mypokedexmobile.databinding.FragmentCatchBinding
-import com.cumiterbang.mypokedexmobile.ui.catch_new.adapter.PokemonsGridAdapter
-import com.cumiterbang.mypokedexmobile.ui.home.HomeViewModel
+import com.cumiterbang.mypokedexmobile.ui.catch_menu.adapter.PokemonsGridAdapter
 import com.cumiterbang.mypokedexmobile.utils.EndlessRecyclerViewScrollListener
 import com.cumiterbang.mypokedexmobile.utils.GridSpacingItemDecoration
 import com.google.android.material.snackbar.Snackbar
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,10 +39,8 @@ class CatchFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentCatchBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,7 +57,9 @@ class CatchFragment : Fragment() {
 
         pokemonsAdapter = PokemonsGridAdapter(binding.root.context)
         pokemonsAdapter.onItemClick = {
-            val pokemonId = ApiUrls.getPokemonIdFromUrl(it.url)
+            val intent = Intent(activity, PokemonDetailPage::class.java)
+            intent.putExtra("pokemonItemModel", Gson().toJson(it))
+            startActivity(intent)
         }
 
         with(binding.gridViewPokemons) {

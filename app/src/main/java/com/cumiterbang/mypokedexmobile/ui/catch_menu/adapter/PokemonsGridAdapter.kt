@@ -1,4 +1,4 @@
-package com.cumiterbang.mypokedexmobile.ui.catch_new.adapter
+package com.cumiterbang.mypokedexmobile.ui.catch_menu.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
