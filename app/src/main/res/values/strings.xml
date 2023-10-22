@@ -12,6 +12,6 @@
     <string name="no">NO</string>
     <string name="welcome_title">Welcome to My Pokedex Mobile</string>
     <string name="this_app">This app is simulating your phone as pokedex to get the data of wild pokemon. Go to Catch menu and see various pokemon, tap on it to see the description</string>
-    <string name="how_to_catch">You can also catch the pokemon by tapping the Catch Now button until you catch the pokemon. The catched pokemon will appear in Home menu as you pokemon collection</string>
-    <string name="how_to_release">You can release you pokemon collection by tap long on selected pokemon and confirm to release the selected pokemon</string>
+    <string name="how_to_catch">You can also catch the pokemon by tapping the Catch Now button until you catch the pokemon. The catched pokemon will appear in Home menu as your pokemon collection</string>
+    <string name="how_to_release">You can release your pokemon collection by tap long on selected pokemon and confirm to release the selected pokemon</string>
 </resources>
