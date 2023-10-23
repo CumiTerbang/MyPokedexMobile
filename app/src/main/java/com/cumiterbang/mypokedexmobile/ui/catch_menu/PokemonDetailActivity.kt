@@ -2,12 +2,12 @@ package com.cumiterbang.mypokedexmobile.ui.catch_menu
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.LinearLayoutCompat
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.cumiterbang.mypokedexmobile.R
 import com.cumiterbang.mypokedexmobile.data.helper.ApiUrls
@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.random.Random
+
 
 @AndroidEntryPoint
 class PokemonDetailActivity : AppCompatActivity() {
@@ -75,14 +76,39 @@ class PokemonDetailActivity : AppCompatActivity() {
         buttonCatchPokemon.setOnClickListener {
             var random = Random.nextInt(2, 6)
             if (random % 2 == 0) {
-                val snackbar = Snackbar.make(
-                    binding.root, "Congrats!\n" +
-                            "You Catch -${pokemonItemModel.name.uppercase()}-",
-                    Snackbar.LENGTH_LONG
-                ).setAction("Action", null)
-                snackbar.show()
+                val edittext = EditText(this@PokemonDetailActivity);
+                val density = this@PokemonDetailActivity.getResources().getDisplayMetrics().density
 
-                viewModel.catchSuccess(pokemonItemModel)
+                val paddingDp = 8;
+                val paddingPixel = (paddingDp * density).toInt()
+                edittext.setPadding(paddingPixel, paddingPixel, paddingPixel, paddingPixel);
+
+                edittext.setHint(R.string.type_here)
+
+                val builder = AlertDialog.Builder(binding.root.context)
+                builder.setTitle("Congrats!")
+                builder.setMessage(
+                    "You Catch -${pokemonItemModel.name.uppercase()}-\n" +
+                            "give your ${pokemonItemModel.name} a nickname?"
+                )
+                builder.setView(edittext)
+
+                builder.setPositiveButton(R.string.confirm) { dialog, which ->
+                    var nameByUser = "catched ${pokemonItemModel.name}"
+                    if (!edittext.text.isEmpty()) nameByUser = edittext.text.toString()
+
+                    val snackbar = Snackbar.make(
+                        binding.root,
+                        "$nameByUser had been placed to your pokemon collection! see the Home menu",
+                        Snackbar.LENGTH_LONG
+                    ).setAction("Action", null)
+                    snackbar.show()
+
+                    viewModel.catchSuccess(pokemonItemModel, nameByUser)
+
+                }
+                builder.show()
+
 
             } else {
                 val snackbar = Snackbar.make(
@@ -155,7 +181,8 @@ class PokemonDetailActivity : AppCompatActivity() {
         }
         val dataTemplateAbilities =
             layoutInflater.inflate(R.layout.pokemaon_detail_data_item, null, false)
-        dataTemplateAbilities.findViewById<TextView>(R.id.valueData).text = abilitiesValue.dropLast(2)
+        dataTemplateAbilities.findViewById<TextView>(R.id.valueData).text =
+            abilitiesValue.dropLast(2)
         dataTemplateAbilities.findViewById<TextView>(R.id.titleData).text = "Abilities"
         dataTemplateAbilities.id = View.generateViewId()
         binding.pokemonDetailData.addView(dataTemplateAbilities)

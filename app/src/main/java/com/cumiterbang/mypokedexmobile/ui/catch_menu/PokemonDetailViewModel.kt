@@ -29,10 +29,10 @@ class PokemonDetailViewModel @Inject constructor(private val dataRepo: DataRepo,
         _name.value = pokemonName
     }
 
-    fun catchSuccess(catch: PokemonListItemModel){
+    fun catchSuccess(catch: PokemonListItemModel, nameByUser:String){
         var mypokemon = MyPokemonEntity(
             name = catch.name,
-            nameByCatch = "catched ${catch.name}",
+            nameByCatch = nameByUser,
             url = catch.url
         )
         viewModelScope.launch {
